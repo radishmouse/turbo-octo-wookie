@@ -1,0 +1,26 @@
+// COLORS
+$light-gray: #CCC;
+$red: #E74C3C;
+$green: #2ECC71;
+$blue: #3498DB;
+
+html{
+	background: url("../img/bg-cloud2.jpg") no-repeat center center fixed;
+	/*background-size: cover;*/
+}
+
+body {
+	margin: 0;
+}
+
+svg {
+	background-color:red;
+	display: block;
+}
+
+.tray {
+	background-color: $light-gray;
+	margin: 0 auto;
+	height: 880px;
+	width: 600px;
+}
