@@ -1,21 +1,4 @@
 var paper = Snap('.tray'),
-	// noteLeft = paper.circle(100,60,60),
-	// noteCenter = paper.circle(300,60,60),
-	// noteRight = paper.circle (500,60,60),
-	noteTranslationDuration = 1700,
-	songLength = 0;
-
-noteLeft.attr({
-	fill: '#C0392B'
-});
-
-noteCenter.attr({
-	fill: '#27AE60'
-});
-
-noteRight.attr({
-	fill: '#2980B9'
-});
 
 var noteDataLookup = [ 
 	{/* this line intentionally left blank for 1 instead of 0 */},
@@ -33,6 +16,10 @@ var noteDataLookup = [
 	}
 ];
 
+var songDataLookup = [
+	
+];
+
 // Create note constructor
 function Note(column){
 	this.column = column;
@@ -40,8 +27,8 @@ function Note(column){
 
 
 // Notes are generated based on the beat of the the music
-var noteGenerator = function(BPM,songLength){
-	var daNotes = [];
+var columnGenerator = function(BPM,songLength){
+	var columnArray = [];
 	var beats = (BPM/60)*songLength;
 
 	for (count < beats; count++){
@@ -49,25 +36,46 @@ var noteGenerator = function(BPM,songLength){
 		var column = Math.floor(Math.random()*3+1);
 
 		// create new svg note
-		daNotes.push(new Note(column))		
+		columnArray.push(new Note(column))		
 	}
 	//return an array of notes to
-	return daNotes; 
+	return columnArray; 
 };
 
-var sheetMusic = noteGenerator(120,180);
+var sheetMusic = columnGenerator(120,180);
 var noteHolster = [];
 
-// Note fades in on beat until song is done
-for (i=0; i < daNotes.length; i++){
-	noteHolster.push(paper.circle(noteDataLookup[sheetMusic[0].column].xPosition,60,60));
+// Array of svg circles is generated based on random number array
+for (i=0; i < sheetMusic.length; i++){
+	noteHolster.push(paper.circle(noteDataLookup[sheetMusic[i].column].xPosition,60,60).attr({fill: noteDataLookup[sheetMusic[i].column].noteColor, opacity: 0.2}));
+}
+
+var kickoff = function(){
+		var fadeIn = function(note) {note.animate({opacity: 1}, 200, mina.linear, slideDown)},
+			slideDown = function() {note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, crossTarget},
+			crossTarget = function() {note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, },
+			// socket.io to server function for popCheck
+			fadeOut = function() {note.animate({opacity: 0}, 200)};
+
+	for (i=0; i < noteHolster.length; i++){
+		fadeIn(noteHolster[i]);
+	}	
+};
+
+		
+		note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, 
+			function (){note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, 
+				function (){note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, 
+					))}}});
+	}
+
 }
 		
 
 
 // Note slides down to BPM of song
-noteLeft.animate({opacity: 0.2}, 1000);
-noteLeft.animate({ transform: 'translate(0,900)'}, noteTranslationDuration)
+
+
 // noteLeft.animate({r: 50}, 1000);
 
 // Register target to server
