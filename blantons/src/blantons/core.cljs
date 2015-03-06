@@ -1,6 +1,11 @@
 (ns blantons.core
-  (:require [cljs.nodejs :as node]))
+  (:require [cljs.nodejs :as node]
+            [blantons.game :as game]
+            ))
 
+; (def env (browser/repl-env))
+; (repl/repl env)
+; (repl/connect "http://localhost:9000/repl")
 (node/enable-util-print!)
 
 (def *port* 3000)
@@ -10,7 +15,7 @@
 (def http (node/require "http"))
 
 (defn handler [req res]
-  (let [index (str __dirname "/../../index.html")]
+  (let [index (str __dirname "/../../repl.html")]
     (println index)
     (.readFile fs index (fn [err data]
                           (if (nil? err)
@@ -38,4 +43,7 @@
                                                         (println data))))))
 
 (set! *main-cli-fn* -main)
+
+(game/my-name)
+
 

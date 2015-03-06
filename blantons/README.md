@@ -1,5 +1,5 @@
 
-# Blantons
+# Blantons: the horse and rider
 
 - `lein new mies-node blantons`
 - edit/update `project.clj`
