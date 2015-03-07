@@ -1,4 +1,4 @@
-var paper = Snap('.tray');
+var paper = Snap('');
 
 var noteDataLookup = [ 
 	{/* this line intentionally left blank for 1 instead of 0 */},
@@ -86,7 +86,14 @@ socket.onmessage = function(e) {
 };
 
 // User should see ball feedback when they move the controller
-// 
+// Load the ball
+loadPart(wookieParts[9].url, function(){
+	// Snap('#ball');
+});
+var ballPosition = 30,
+	ballMin = 0,
+	ballMax = 60;
+
 	
 
 
@@ -94,6 +101,11 @@ socket.onmessage = function(e) {
 var kickoff = function(){
 
 // Start a countdown
+var countdown = function(){
+	for(i=0; i<9; i++){
+		$('body').append('<div class="overlay"><h1 class="countdown">'+i+'</h1><div>');
+	};
+};
 // When the count down ends:
 	// For every beat, fade in a note and have it slide toward the goal line
 	// When it hits the goal line, let the server know it's in the zone
@@ -115,13 +127,5 @@ var kickoff = function(){
 };
 
 		
-// Note slides down to BPM of song
-
-
-// noteLeft.animate({r: 50}, 1000);
-
-// Register target to server
-	// Register note passing into zone
-	// Send to server
 // Note pops when it is tapped by the user
 // Note fades out when it passes beyond the target zone
