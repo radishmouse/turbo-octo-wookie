@@ -20,6 +20,14 @@ var wookieParts = [
 	svgName: 'bgStars'
 },
 {
+	url: 'img/flame1.svg',
+	svgName: 'flame1'
+},
+{
+	url: 'img/flame2.svg',
+	svgName: 'flame2'
+},
+{
 	url: 'img/lights.svg',
 	svgName: 'lights'
 },
@@ -29,15 +37,13 @@ var wookieParts = [
 }
 ];
 
-
 function loadPart(part) {
 	Snap.load(part.url, function(fragment) {
-		var svgName = fragment.select("#" + part.svgName);
-		s.append(svgName);
+		// var svgName = fragment.select("#" + part.svgName);
+		// s.append(svgName);
+		s.append(fragment);
 	});
 }
-
-
 
 wookieParts.forEach(function (part) {
 	console.log(part.url + ': ' + part.svgName);
@@ -46,6 +52,8 @@ wookieParts.forEach(function (part) {
 // for (i=0; i < wookieParts.length; i++){
 // };
 //Align wookie top and bottoms properly
+
+
 	// Bounce
 		// Whole wookie top slides down
 		// Whole wookie comes back up
