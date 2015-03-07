@@ -7,18 +7,28 @@
             [hiccup.page :refer [html5 include-js]]
             [simple-brepl.service :refer [brepl-js]]
             [ring.middleware.format :refer [wrap-restful-format]]
-            [ring.middleware.basic-authentication :refer [wrap-basic-authentication]]))
+            [ring.middleware.basic-authentication :refer [wrap-basic-authentication]]
+            ; [chord.example.utils :refer [tick]]
+            ))
+
 
 
 (defn ws-handler [{:keys [ws-channel] :as req}]
+  "For a websockets connection, stream gestures"
   (println "Opened connection from" (:remote-addr req))
+  ; (tick 500 (go (>! ws-channel
+  ;                 {:gesture (format "L")})))
   (go-loop []
-    (when-let [{:keys [message error] :as msg} (<! ws-channel)]
-      (prn "Message received:" msg)
-      (>! ws-channel (if error
-                       (format "Error: '%s'." (pr-str msg))
-                       {:received (format "You passed: '%s' at %s." (pr-str message) (java.util.Date.))}))
-      (recur))))
+           ; (when-let [{:keys [message error] :as msg} (<! ws-channel)]
+           ;   (prn "Message received:" msg)
+           ;   (>! ws-channel (if error
+           ;                    (format "Error: '%s'." (pr-str msg))
+           ;                    {:received (format "You passed: '%s' at %s." (pr-str message) (java.util.Date.))}))
+           ;   (recur))
+           (>! ws-channel
+                               {:gesture (format "L")})
+               (Thread/sleep 500)
+               (recur)))
 
 (defroutes app-routes
   (GET "/" [] (resource-response "index.html"))
@@ -46,3 +56,4 @@
 (def app
   ; using #' means that we refer to the symbol app-routes, and not the value it points to
   #'app-routes)
+

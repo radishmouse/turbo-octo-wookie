@@ -1,7 +1,7 @@
 console.log ('Prepare to Ride! Pew pew!');
 
 // Stage creation
-var trayLeft = Snap('#trayLeft');
+// var trayLeft = Snap('#trayLeft');
  // trayRight = Snap('#trayRight');
 console.log('I made a tray!');
 
@@ -50,14 +50,15 @@ var wookieParts = [
 ];
 
 function loadPart(part, cb) {
-    Snap.load(part.url, function(fragment) {
-        // var svgName = fragment.select("#" + part.svgName);
-        // s.append(svgName);
-        trayLeft.append(fragment);
-        if (cb) {
-            cb();
-        }
-    });
+    // ignoring snap for right now.
+    // Snap.load(part.url, function(fragment) {
+    //     // var svgName = fragment.select("#" + part.svgName);
+    //     // s.append(svgName);
+    //     trayLeft.append(fragment);
+    //     if (cb) {
+    //         cb();
+    //     }
+    // });
 }
 
 
