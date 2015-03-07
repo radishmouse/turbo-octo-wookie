@@ -3,6 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 800 1080" enable-background="new 0 0 800 1080" xml:space="preserve">
+<g id="ui-tray">
 <symbol  id="New_Symbol" viewBox="-60.6 -28 122.8 63.6">
 	<polygon fill="#AF7C5A" points="62.2,35.6 -37,35.6 -54.6,18 -54.6,-22 44.6,-22 62.2,-4.4 	"/>
 	<polygon fill="#A87552" points="44.6,-22 -54.6,-22 -54.6,18 44.6,18 	"/>
@@ -165,4 +166,5 @@
 	<polygon fill="#939598" points="800,0 700,0 700,880 100,880 100,0 0,0 0,980 800,980 	"/>
 </g>
 <line fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="200.5" y1="731" x2="600.5" y2="731"/>
+</g>
 </svg>

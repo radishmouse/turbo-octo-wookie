@@ -3,6 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
+<g id="ball">
 <symbol  id="New_Symbol" viewBox="-60.6 -28 122.8 63.6">
 	<polygon fill="#AF7C5A" points="62.2,35.6 -37,35.6 -54.6,18 -54.6,-22 44.6,-22 62.2,-4.4 	"/>
 	<polygon fill="#A87552" points="44.6,-22 -54.6,-22 -54.6,18 44.6,18 	"/>
@@ -163,5 +164,6 @@
 	<path fill="#FFFFFF" d="M60,120C26.9,120,0,93.1,0,60S26.9,0,60,0c33.1,0,60,26.9,60,60S93.1,120,60,120z M60,17.8
 		c-23.3,0-42.2,18.9-42.2,42.2s18.9,42.2,42.2,42.2s42.2-18.9,42.2-42.2S83.3,17.8,60,17.8z"/>
 	<path fill="#414042" d="M60,102.5c-23.6,0-42.9-19.2-42.9-42.9S36.4,16.8,60,16.8s42.9,19.2,42.9,42.9S83.6,102.5,60,102.5z"/>
+</g>
 </g>
 </svg>

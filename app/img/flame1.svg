@@ -3,6 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 220 300" enable-background="new 0 0 220 300" xml:space="preserve">
+<g id="flame1">
 <symbol  id="New_Symbol" viewBox="-60.6 -28 122.8 63.6">
 	<polygon fill="#AF7C5A" points="62.2,35.6 -37,35.6 -54.6,18 -54.6,-22 44.6,-22 62.2,-4.4 	"/>
 	<polygon fill="#A87552" points="44.6,-22 -54.6,-22 -54.6,18 44.6,18 	"/>
@@ -172,5 +173,6 @@
 		c-7.2,35-59.7,25.6-55.1-9.9C90.4,206,94.9,195.7,104.9,185.2z"/>
 	<path fill="#FFFFFF" d="M104.9,185.2c6.3-6.6,11.2-14,14.2-22c23,27.6,28.1,47.6,25.2,62c-7.2,35-59.7,25.6-55.1-9.9
 		C90.4,206,94.9,195.7,104.9,185.2z"/>
+</g>
 </g>
 </svg>
