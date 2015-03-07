@@ -1,3 +1,5 @@
 console.log ('Prepare to Ride! Pew pew!');
 
-// Increment points counter
+// Stage creation
+var trayLeft = Snap('#trayLeft'),
+	trayRight = Snap('#trayRight');
