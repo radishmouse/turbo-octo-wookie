@@ -48,15 +48,15 @@ function loadPart(part, cb) {
 	});
 }
 
-loadPart(wookieParts[2], function () {
-	scaleObj('#wookieTopBlue', 25);
-	var orig = Snap('#wookieTopBlue').transform().string;
-	Snap('#wookieTopBlue').hover(
-	    function(){
-	        Snap('#wookieTopBlue').attr({'transform':'T15,0,' + orig});
-	    },function(){
-	        Snap('#wookieTopBlue').attr({'transform': orig});
-	    });
+loadPart(wookieParts[4], function () {
+	scaleObj('#flame1', 25);
+	// var orig = Snap('#wookieTopBlue').transform().string;
+	// Snap('#wookieTopBlue').hover(
+	//     function(){
+	//         Snap('#wookieTopBlue').attr({'transform':'T15,0,' + orig});
+	//     },function(){
+	//         Snap('#wookieTopBlue').attr({'transform': orig});
+	//     });
 
 });
 // loadPart(wookieParts[0]);
@@ -64,6 +64,50 @@ loadPart(wookieParts[2], function () {
 function scaleObj(obj, pct) {
 	Snap(obj).attr({transform: "S" + pct/100});
 }
+
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
+
+var fps = 3;
+var interval = 1000 / fps;
+var toggle = true;
+
+function draw() {
+    setTimeout(function() {
+        window.requestAnimationFrame(draw);
+
+		if (toggle) {
+			Snap('#flame1').transform((new Snap.Matrix()).scale(-0.25, 0.25).translate(-250, 50));
+		} else {
+			Snap('#flame1').transform((new Snap.Matrix()).scale(0.25, 0.25).translate(-30, 50));
+		}
+		toggle = !toggle;
+    }, interval);
+}
+
+
 
 // .transform().string
 
