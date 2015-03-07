@@ -19,6 +19,22 @@ var wookieParts = [
 	url: 'img/bg-stars.svg',
 	svgName: 'bgStars'
 }
+{
+	url: 'img/flame1.svg',
+	svgName: 'flame1'
+}
+{
+	url: 'img/flame2.svg',
+	svgName: 'flame2'
+}
+{
+	url: 'img/lights.svg',
+	svgName: 'lights'
+}
+{
+	url: 'img/stage.svg',
+	svgName: 'stage'
+}
 ];
 
 
@@ -28,6 +44,8 @@ function loadPart(part) {
 		s.append(svgName);
 	});
 }
+
+
 
 wookieParts.forEach(function (part) {
 	console.log(part.url + ': ' + part.svgName);
