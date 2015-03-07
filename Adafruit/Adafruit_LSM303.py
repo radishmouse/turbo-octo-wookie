@@ -65,27 +65,24 @@ class Adafruit_LSM303(Adafruit_I2C):
         return n if n < 32768 else n - 65536 # 2's complement signed
 
 
-    def read_accel(self):
-        ACCEL = {}
+    def read_accel_mag(self):
+        ALL_DATA = {}
+        ALL_DATA["Accelerometer"] = {}
+        ALL_DATA["Magnetometer"] = {}
 
         list = self.accel.readList(
           self.LSM303_REGISTER_ACCEL_OUT_X_L_A | 0x80, 6)
-      	ACCEL["x"] = self.accel12(list, 0)
-      	ACCEL["y"] = self.accel12(list, 2)
-      	ACCEL["z"] = self.accel12(list, 4)
-
-        return ACCEL
-	
-    def read_mag(self):
-        MAG = {}
+      	ALL_DATA["Accelerometer"]["x"] = self.accel12(list, 0)
+      	ALL_DATA["Accelerometer"]["y"] = self.accel12(list, 2)
+      	ALL_DATA["Accelerometer"]["z"] = self.accel12(list, 4)
 
         list = self.mag.readList(
       	  self.LSM303_REGISTER_MAG_OUT_X_H_M, 6)
-      	MAG["x"] = self.mag16(list, 0)
-      	MAG["y"] = self.mag16(list, 2)
-      	MAG["z"] = self.mag16(list, 4)
+      	ALL_DATA["Magnetometer"]["x"] = self.mag16(list, 0)
+      	ALL_DATA["Magnetometer"]["y"] = self.mag16(list, 2)
+      	ALL_DATA["Magnetometer"]["z"] = self.mag16(list, 4)
       
-        return MAG
+        return ALL_DATA
 
 
     def setMagGain(gain=LSM303_MAGGAIN_1_3):
@@ -98,10 +95,7 @@ if __name__ == '__main__':
     from time import sleep
     
     lsm = Adafruit_LSM303()
-    accel = lsm.read_accel()
-    mag = lsm.read_mag()
-    accel_mag = {"Accelerometer" : accel, "Magnetometer" : mag}
 
     while True:
-    	accel_mag_data = json.dumps(accel_mag)
+    	accel_mag_data = json.dumps(lsm.read_accel_mag())
     	ws.send(accel_mag_data)
