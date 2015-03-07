@@ -1,0 +1,22 @@
+html {
+  background: url("../img/bg-stars.svg");
+  background-size: cover; }
+
+body {
+  margin: 0; }
+
+svg {
+  display: block; }
+
+.tray-group {
+  margin: 0 auto;
+  width: 1800px; }
+
+.tray {
+  height: 1080px;
+  width: 800px; }
+
+.tray:first-child {
+  margin-right: 100px; }
+
+/*# sourceMappingURL=app.css.map */

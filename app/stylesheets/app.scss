@@ -1,0 +1,52 @@
+// COLORS
+$light-gray: #CCC;
+$red: #E74C3C;
+$green: #2ECC71;
+$blue: #3498DB;
+
+html{
+	background: url("../img/bg-stars.svg");
+	background-size: cover;
+}
+
+html, body{
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	position: relative;
+}
+
+svg {
+	display: block;
+}
+
+.tray-group{
+	margin: 0 auto;
+	width: 1800px;
+}
+
+.tray {
+	height: 1080px;
+	width: 800px;
+}
+
+.tray:first-child{
+	margin-right: 100px;
+}
+
+.countdown{
+	font-size: 4em;
+	margin: auto;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
