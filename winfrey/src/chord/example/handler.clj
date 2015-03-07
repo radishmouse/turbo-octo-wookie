@@ -9,13 +9,6 @@
             [ring.middleware.format :refer [wrap-restful-format]]
             [ring.middleware.basic-authentication :refer [wrap-basic-authentication]]))
 
-; (defn page-frame []
-;   (html5
-;    [:head
-;     [:script (brepl-js)]
-;     [:title "Chord Example"]
-;     (include-js "/js/chord-example.js")]
-;    [:body [:div#content]]))
 
 (defn ws-handler [{:keys [ws-channel] :as req}]
   (println "Opened connection from" (:remote-addr req))
@@ -32,22 +25,20 @@
   ; (GET "/" [] (response (page-frame)))
   (GET "/ws" [] (-> ws-handler
                     (wrap-websocket-handler {:format :transit-json})))
-  (ANY "/ajax" []
-    (-> (fn [{:keys [body-params] :as req}]
-          (response {:you-said body-params
-                     :req (dissoc req :async-channel :body)}))
+  ; (ANY "/ajax" []
+  ;   (-> (fn [{:keys [body-params] :as req}]
+  ;         (response {:you-said body-params
+  ;                    :req (dissoc req :async-channel :body)}))
 
-        (wrap-restful-format :formats [:edn :json-kw])
-        (wrap-basic-authentication #(do
-                                      (prn %&)
-                                      true))))
+  ;       (wrap-restful-format :formats [:edn :json-kw])
+  ;       (wrap-basic-authentication #(do
+  ;                                     (prn %&)
+  ;                                     true))))
 
+  ; static assets, yo.
   (resources "/scripts" {:root "scripts"})
   (resources "/stylesheets" {:root "stylesheets"})
   (resources "/bower_components" {:root "bower_components"})
-  ; (resources "/js" {:root "js"}))
-  ; (resources "/static" {:root "static"}))
-  ; (resources "/static" {:root "static"}))
   )
 
 ; a ring application boils down to a function which takes a request map
