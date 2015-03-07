@@ -1,7 +1,7 @@
 
 // Singleton that communicates with the WebSockets server
 // and provides an internal API for the wookie game
-var SERVER = (function (WS, t) {
+window.SERVER = (function (WS, t) {
     'use strict';
 
 

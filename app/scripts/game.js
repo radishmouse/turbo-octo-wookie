@@ -45,3 +45,9 @@ GameRound.prototype.windowClose = function () {
 };
 
 
+// Keeps track of total scores for 2 players and manages GameRound instances
+function Game() {
+
+}
+
+
