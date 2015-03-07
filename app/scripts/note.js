@@ -1,6 +1,6 @@
-var paper = Snap('.tray'),
+var paper = Snap('.tray');
 
-var noteDataLookup = [ 
+var noteDataLookup = [
 	{/* this line intentionally left blank for 1 instead of 0 */},
 	{
 		xPosition = 100;
@@ -17,7 +17,7 @@ var noteDataLookup = [
 ];
 
 var songDataLookup = [
-	
+
 ];
 
 // Create note constructor
@@ -36,10 +36,10 @@ var columnGenerator = function(BPM,songLength){
 		var column = Math.floor(Math.random()*3+1);
 
 		// create new svg note
-		columnArray.push(new Note(column))		
+		columnArray.push(new Note(column))
 	}
 	//return an array of notes to
-	return columnArray; 
+	return columnArray;
 };
 
 var sheetMusic = columnGenerator(120,180);
@@ -59,18 +59,18 @@ var kickoff = function(){
 
 	for (i=0; i < noteHolster.length; i++){
 		fadeIn(noteHolster[i]);
-	}	
+	}
 };
 
-		
-		note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, 
-			function (){note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, 
-				function (){note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, 
+
+		note.animate({ transform: 'translate(0,200)'}, 200, mina.linear,
+			function (){note.animate({ transform: 'translate(0,400)'}, 200, mina.linear,
+				function (){note.animate({ transform: 'translate(0,200)'}, 200, mina.linear,
 					))}}});
 	}
 
 }
-		
+
 
 
 // Note slides down to BPM of song
