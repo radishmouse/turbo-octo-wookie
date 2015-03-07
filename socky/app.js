@@ -40,7 +40,38 @@ function processUserDirection(obj) {
     return move;
 }
 
-// function isShake
+function processShake(obj) {
+    'use strict';
+
+    // get the average of the accel values
+    // if it is < -250 then we are moving left
+    // if it is > 250 then we are moving right
+
+    var sumY = 0;
+    var sumZ = 0;
+    var sum = 0;
+    for(var i=0; i<obj.g.length; i++) {
+        console.log(obj.g[i].y);
+        console.log(obj.g[i].z);
+        sumY = sumY + obj.g[i].y;
+        sumZ = sumZ + obj.g[i].z;
+    }
+
+    sum = sumY + sumZ;
+
+    var avgGyro = sum/obj.g.length;
+
+    console.log('avg gyro: ' + avgGyro);
+
+    // DEFAULT to center;
+    var isShaking = 0;
+
+    if (avgGyro < -2.5) {
+        isShaking = 1;
+    }
+
+    return isShaking;
+}
 
 
 
@@ -107,7 +138,7 @@ accel2.on('connection', function(ws) {
 });
 
 
-var gyro2 = new WebSocketServer({port: 8084});
+var gyro2 = new WebSocketServer({port: 8083});
 gyro2.on('connection', function(ws) {
     'use strict';
 
@@ -140,8 +171,10 @@ function crunchPlayer1(data) {
         }
     }
     if (player1Sock) {
-        player1Sock.send(processUserDirection(player1Moves));
-        // player1Sock.send(processUserDirection(player1Moves));
+        player1Sock.send({
+            move: processUserDirection(player1Moves),
+            shake: processShake(player1Moves)
+        });
     }
 }
 
@@ -162,7 +195,10 @@ function crunchPlayer2(data) {
         }
     }
     if (player2Sock) {
-        player2Sock.send(processUserDirection(player2Moves));
+        player2Sock.send({
+            move: processUserDirection(player2Moves),
+            shake: processShake(player2Moves)
+        });
     }
 }
 
