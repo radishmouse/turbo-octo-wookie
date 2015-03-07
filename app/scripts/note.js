@@ -69,30 +69,25 @@ socket.onmessage = function(e) {
 
 	// 1 moves the ball left
 	if (e.data == 1){
-		ballPosition--
-	};
+		ballPosition--;
+	}
 	// 2 moves the ball right
 	if (e.data == 2){
-		ballPosition++
-	};
+		ballPosition++;
+	}
 	// 3 taps the ball
 	if (e.data == 3){
 
-	};	
-};
+	};
 
-// User should see ball feedback when they move the controller
-// Load the ball
-
-if (ballPosition > 60){
+	if (ballPosition >= 50){
 	$('.ball').css({'left': '500px'});
+	}
+	if (ballPosition <= 10){
+		$('.ball').css({'left': '100px'});
+	}
+	else $('.ball').css({'left': ballPosition*10});	
 };
-if (ballPosition < 0){
-	$('.ball').css({'left': '100px'});
-};
-	
-
-
 
 // var kickoff = function(){
 
@@ -103,32 +98,34 @@ var countdown = function(){
 	};
 };
 
+var i;
 
 // When the count down ends:
-var wookBand = function(){
-	// For every beat,
-	var i;
-	for (i=0; i < noteArray.length; i++){
-		console.log('woookies');
-		setTimeout(function(){
+// var wookBand = function(){
+// 	// For every beat,
+	
+// 	// for (i=0; i < noteArray.length; i++){
+// 	setTimeout(function(){
+// 		// window.requestAnimationFrame(wookBand);
+// 		console.log('Chitty bang bang');
+// 		if (i < noteArray.length) {
+// 		//fade in a note and have it slide toward the goal line
+// 		$(noteArray[i]).appendTo('#tray-left').velocity({translateY: '200px', opacity:1}, {duration: 500}).velocity({translateY: '400px'}, {duration: 1000}).velocity({translateY: '200px', opacity:0}, {duration: 500});                                  
+// 		}
+// 		i++;
+// 		// When it hits the goal line, let the server know it's in the zone
+// 		// If the server says it's good, pop the note and increment the player's score
+// 	// Else, fade it out and     
+// 	}, 2300);
+// };
 
-			//fade in a note and have it slide toward the goal line
-			$(noteArray[i]).appendTo('#tray-left').velocity({translateY: '200px', opacity:1}, {duration: 500}).velocity({translateY: '400px'}, {duration: 1000}).velocity({translateY: '200px', opacity:0}, {duration: 500});                                  
-			window.requestAnimationFrame(function(){});
-			// When it hits the goal line, let the server know it's in the zone
-			// If the server says it's good, pop the note and increment the player's score
-		// Else, fade it out and     
-		}, i*1000*(songDataLookup[songNumber].BPM/60));
-	};
+
+var wookBand = function(){
+	// columnGenerator(138,239);
+	$(noteArray[i]).appendTo('#tray-left').velocity({translateY: '200px', opacity:1}, {duration: 500}).velocity({translateY: '400px'}, {duration: 1000}).velocity({translateY: '200px', opacity:0}, {duration: 500});                                  
 };
 
-		// var pop = function() {note.animate({opacity: 0, width: )}, //the note should expand and fade, then be deleted
-		// fadeOut = function() {note.animate({opacity: 0}, 200)},
-		// crossTarget = function() {note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, },
-		// slideDown = function() {note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, crossTarget},
-// 		fadeIn = function(note) {note.animate({opacity: 1}, 200, mina.linear, slideDown)};
-			
-		
+setInterval(wookBand,100);
 			
 
 // 	for (i=0; i < noteHolster.length; i++){

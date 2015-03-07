@@ -15,7 +15,7 @@ svg {
 .ball {
   background: url("../img/ball.svg");
   bottom: 250px;
-  left: 500px;
+  left: 300px;
   height: 200px;
   position: absolute;
   width: 200px; }
