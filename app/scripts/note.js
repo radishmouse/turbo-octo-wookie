@@ -1,42 +1,60 @@
-var paper = Snap('.tray'),
+var paper = Snap('.tray');
 
 var noteDataLookup = [ 
 	{/* this line intentionally left blank for 1 instead of 0 */},
 	{
-		xPosition = 100;
-		noteColor = '#C0392B';
+		xPosition: 100,
+		noteColor: '#C0392B'
 	},
 	{
-		xPosition = 300;
-		noteColor = '#27AE60';
+		xPosition: 300,
+		noteColor: '#27AE60'
 	},
 	{
-		xPosition = 500;
-		noteColor = '#2980B9';
+		xPosition: 500,
+		noteColor: '#2980B9'
 	}
 ];
 
 var songDataLookup = [
-	
+	{
+		songName: 'Barracuda',
+		BPM: 138,
+		songLength: 259
+	},
+	{
+		songName: 'Smells Like Teen Spirit',
+		BPM: 120,
+		songLength: 262
+	},
+	{
+		songName: 'Sweet Child Of Mine',
+		BPM: 128,
+		songLength: 348
+	}
 ];
 
-// Create note constructor
-function Note(column){
-	this.column = column;
-}
+// // Create note constructor
+// function Note(column){
+// 	this.column = column;
+// }
 
+var songNumber = 0;
 
 // Notes are generated based on the beat of the the music
 var columnGenerator = function(BPM,songLength){
-	var columnArray = [];
-	var beats = (BPM/60)*songLength;
+	var noteArray = [];
+	var beats = (songDataLookup[songNumber].BPM/60)*songDataLookup[songNumber].songLength;
 
-	for (count < beats; count++){
+	for (count = 0;count < beats; count++){
 		// randomly choose which column to be in
 		var column = Math.floor(Math.random()*3+1);
 
 		// create new svg note
-		columnArray.push(new Note(column))		
+		var newNote = paper.circle(noteDataLookup[column].xPosition,60,60).attr({fill: noteDataLookup[column].noteColor, opacity: 0})
+		//put the note into the array
+		// noteArray.push(new Note(column))
+		noteArray.push(newNote);		
 	}
 	//return an array of notes to
 	return columnArray; 
@@ -47,15 +65,18 @@ var noteHolster = [];
 
 // Array of svg circles is generated based on random number array
 for (i=0; i < sheetMusic.length; i++){
-	noteHolster.push(paper.circle(noteDataLookup[sheetMusic[i].column].xPosition,60,60).attr({fill: noteDataLookup[sheetMusic[i].column].noteColor, opacity: 0.2}));
+	noteHolster.push(paper.circle(noteDataLookup[sheetMusic[i].column].xPosition,60,60).attr({fill: noteDataLookup[sheetMusic[i].column].noteColor, opacity: 0}));
 }
 
 var kickoff = function(){
-		var fadeIn = function(note) {note.animate({opacity: 1}, 200, mina.linear, slideDown)},
-			slideDown = function() {note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, crossTarget},
-			crossTarget = function() {note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, },
-			// socket.io to server function for popCheck
-			fadeOut = function() {note.animate({opacity: 0}, 200)};
+		// var pop = function() {note.animate({opacity: 0, width: )}, //the note should expand and fade, then be deleted
+		// fadeOut = function() {note.animate({opacity: 0}, 200)},
+		// crossTarget = function() {note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, },
+		// slideDown = function() {note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, crossTarget},
+		// fadeIn = function(note) {note.animate({opacity: 1}, 200, mina.linear, slideDown)};
+			
+		
+			
 
 	for (i=0; i < noteHolster.length; i++){
 		fadeIn(noteHolster[i]);
@@ -63,16 +84,6 @@ var kickoff = function(){
 };
 
 		
-		note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, 
-			function (){note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, 
-				function (){note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, 
-					))}}});
-	}
-
-}
-		
-
-
 // Note slides down to BPM of song
 
 
