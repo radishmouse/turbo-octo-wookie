@@ -13,21 +13,21 @@ var Songs = (function () {
             songName: 'Barracuda',
             BPM: 138,
             songLength: 259,
-            url: 'songs/1.mp3',
+            url: 'songs/1.m4a',
             level: 5
         },
         'teen_spirit': {
             songName: 'Smells Like Teen Spirit',
             BPM: 120,
             songLength: 262,
-            url: 'songs/2.mp3',
+            url: 'songs/2.m4a',
             level: 5
         },
         'sweet_child': {
             songName: 'Sweet Child Of Mine',
             BPM: 128,
             songLength: 348,
-            url: 'songs/3.mp3',
+            url: 'songs/3.m4a',
             level: 5
         }
     };
@@ -62,7 +62,7 @@ var Songs = (function () {
         var index = -1;
         Object.keys(TRACKS).forEach(function (key, i) {
             if (key === name) {
-                index = 1;
+                index = i;
             }
         });
 
@@ -94,9 +94,9 @@ var Songs = (function () {
          */
         var source = context.createBufferSource();
         source.buffer = buffer;
-        if (gain) {
+        // if (gain) {
             // source.gain.value = gain;
-        }
+        // }
         source.connect(context.destination);
         source.start(0);
         return source;

@@ -1,14 +1,29 @@
+var currentSong = 0;
+function nextSong() {
+    'use strict';
+
+    if (currentSong === (Songs.tracks.length - 1)) {
+        currentSong = 0;
+    } else {
+        currentSong = -1;
+    }
+    currentSong = currentSong + 1;
+}
 
 
 function Game() {
+    'use strict';
+
     this.player1 = new Player(new Server(8085));
     this.player2 = new Player(new Server(8086));
-    this.song;
 }
 
 Game.prototype.start = function () {
-    // load a song
-}
+    // start animation
+    // and then...wait?
+    // play the current song
+    Songs.playTrack(Songs.tracks[currentSong]);
+};
 
 // there are several on the screen at the same time.
 // what does that mean?
