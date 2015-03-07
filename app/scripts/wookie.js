@@ -18,22 +18,26 @@ var wookieParts = [
 {
 	url: 'img/bg-stars.svg',
 	svgName: 'bgStars'
-}
+},
 {
 	url: 'img/flame1.svg',
 	svgName: 'flame1'
-}
+},
 {
 	url: 'img/flame2.svg',
 	svgName: 'flame2'
-}
+},
 {
 	url: 'img/lights.svg',
 	svgName: 'lights'
-}
+},
 {
 	url: 'img/stage.svg',
 	svgName: 'stage'
+},
+{
+	url: 'img/ui-tray.svg',
+	svgName: 'tray'
 }
 ];
 
@@ -50,6 +54,8 @@ function loadPart(part) {
 wookieParts.forEach(function (part) {
 	console.log(part.url + ': ' + part.svgName);
 });	
+
+loadPart(wookieParts[8]);
 
 // for (i=0; i < wookieParts.length; i++){
 // };

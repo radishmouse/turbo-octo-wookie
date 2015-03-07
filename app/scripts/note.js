@@ -56,24 +56,55 @@ var columnGenerator = function(BPM,songLength){
 		// noteArray.push(new Note(column))
 		noteArray.push(newNote);		
 	}
-	//return an array of notes to
-	return columnArray; 
+	//return an array of notes
+	return noteArray; 
 };
 
-var sheetMusic = columnGenerator(120,180);
-var noteHolster = [];
+// var sheetMusic = columnGenerator(120,180);
+// var noteHolster = [];
 
-// Array of svg circles is generated based on random number array
-for (i=0; i < sheetMusic.length; i++){
-	noteHolster.push(paper.circle(noteDataLookup[sheetMusic[i].column].xPosition,60,60).attr({fill: noteDataLookup[sheetMusic[i].column].noteColor, opacity: 0}));
-}
+// // Array of svg circles is generated based on random number array
+// for (i=0; i < sheetMusic.length; i++){
+// 	noteHolster.push(paper.circle(noteDataLookup[sheetMusic[i].column].xPosition,60,60).attr({fill: noteDataLookup[sheetMusic[i].column].noteColor, opacity: 0}));
+// }
+
+// Listen for the server and route the data to onscreen visuals
+socket.onmessage = function(e) {
+
+	// 1 moves the ball left
+	if (e.data == 1){
+
+	};
+	// 2 moves the ball right
+	if (e.data == 2){
+
+	};
+	// 3 taps the ball
+	if (e.data == 3){
+
+	};	
+};
+
+// User should see ball feedback when they move the controller
+// 
+	
+
+
 
 var kickoff = function(){
+
+// Start a countdown
+// When the count down ends:
+	// For every beat, fade in a note and have it slide toward the goal line
+	// When it hits the goal line, let the server know it's in the zone
+	// If the server says it's good, pop the note and increment the player's score
+// Else, fade it out and 
+
 		// var pop = function() {note.animate({opacity: 0, width: )}, //the note should expand and fade, then be deleted
 		// fadeOut = function() {note.animate({opacity: 0}, 200)},
 		// crossTarget = function() {note.animate({ transform: 'translate(0,200)'}, 200, mina.linear, },
 		// slideDown = function() {note.animate({ transform: 'translate(0,400)'}, 200, mina.linear, crossTarget},
-		// fadeIn = function(note) {note.animate({opacity: 1}, 200, mina.linear, slideDown)};
+		fadeIn = function(note) {note.animate({opacity: 1}, 200, mina.linear, slideDown)};
 			
 		
 			

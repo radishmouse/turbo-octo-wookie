@@ -1,6 +1,6 @@
 html {
-  background: url("../img/bg-cloud2.jpg") no-repeat center center fixed;
-  /*background-size: cover;*/ }
+  background: url("../img/bg-stars.svg");
+  background-size: cover; }
 
 body {
   margin: 0; }
@@ -8,10 +8,15 @@ body {
 svg {
   display: block; }
 
-.tray {
-  background-color: #CCC;
+.tray-group {
   margin: 0 auto;
-  height: 880px;
-  width: 600px; }
+  width: 1800px; }
+
+.tray {
+  height: 1080px;
+  width: 800px; }
+
+.tray:first-child {
+  margin-right: 100px; }
 
 /*# sourceMappingURL=app.css.map */
