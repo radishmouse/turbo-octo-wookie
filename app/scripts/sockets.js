@@ -11,7 +11,7 @@ window.SERVER = (function (WS, t) {
 
     var subscribers = [];
 
-    var socket = new WS('ws://localhost:3000/ws');
+    var socket = new WS('ws://localhost:3000/p1');
     var r = t.reader('json');
 
     socket.onopen = function () {
