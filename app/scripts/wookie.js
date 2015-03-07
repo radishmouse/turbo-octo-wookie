@@ -36,7 +36,7 @@ var wookieParts = [
 	svgName: 'stage'
 }
 ];
-
+var bb;
 function loadPart(part, cb) {
 	Snap.load(part.url, function(fragment) {
 		// var svgName = fragment.select("#" + part.svgName);
@@ -48,8 +48,10 @@ function loadPart(part, cb) {
 	});
 }
 
-loadPart(wookieParts[4], function () {
-	scaleObj('#flame1', 25);
+loadPart(wookieParts[2], function () {
+	// scaleObj('#flame1', 25);
+	scaleObj('#wookieTopBlue', 25);
+	bb = Snap('#wookieTopBlue').getBBox();
 	// var orig = Snap('#wookieTopBlue').transform().string;
 	// Snap('#wookieTopBlue').hover(
 	//     function(){
@@ -57,12 +59,12 @@ loadPart(wookieParts[4], function () {
 	//     },function(){
 	//         Snap('#wookieTopBlue').attr({'transform': orig});
 	//     });
-
 });
 // loadPart(wookieParts[0]);
 
 function scaleObj(obj, pct) {
-	Snap(obj).attr({transform: "S" + pct/100});
+	// Snap(obj).attr({transform: "s" + pct/100});
+	Snap(obj).transform((new Snap.Matrix()).scale(pct/100, pct/100));
 }
 
 (function() {
@@ -90,24 +92,61 @@ function scaleObj(obj, pct) {
         };
 }());
 
-var fps = 3;
-var interval = 1000 / fps;
-var toggle = true;
+function getInterval() {
+	var max = 18;
+	var min = 3;
+	var fps = Math.floor(Math.random() * max) + min;
+	return (1000 / fps);
+}
 
-function draw() {
+// var toggle = true;
+
+function flameJiggle() {
     setTimeout(function() {
-        window.requestAnimationFrame(draw);
+        window.requestAnimationFrame(flameJiggle);
 
 		if (toggle) {
 			Snap('#flame1').transform((new Snap.Matrix()).scale(-0.25, 0.25).translate(-250, 50));
 		} else {
 			Snap('#flame1').transform((new Snap.Matrix()).scale(0.25, 0.25).translate(-30, 50));
 		}
-		toggle = !toggle;
-    }, interval);
+		flameJiggle.toggle = !flameJiggle.toggle;
+    }, getInterval());
+}
+flameJiggle.toggle = true;
+
+// flameJiggle();
+
+
+function rockWookieRock() {
+    setTimeout(function() {
+        window.requestAnimationFrame(rockWookieRock);
+
+		if (toggle) {
+			Snap('#wookieTopBlue').transform((new Snap.Matrix()).scale(-0.25, 0.25).translate(-250, 50));
+		} else {
+			Snap('#wookieTopBlue').transform((new Snap.Matrix()).scale(0.25, 0.25).translate(-30, 50));
+		}
+		rockWookieRock.toggle = !rockWookieRock.toggle;
+    }, (1000 / 4));
 }
 
+rockWookieRock.toggle = true;
 
+
+function raysAnimation(){
+	Snap('#wookieTopBlue').stop().animate(
+		{ transform: 'r90,256,256'}, // Basic rotation around a point. No frills.
+		10000, // Nice slow turning rays
+		function(){
+			Snap('#wookieTopBlue').attr({ transform: 'rotate(0 256 256)'}); // Reset the position of the rays.
+			raysAnimation(); // Repeat this animation so it appears infinite.
+		}
+	);
+
+}
+
+// Snap('#wookieTopBlue').transform((new Snap.Matrix()).scale(0.25, 0.25).rotate(30, 0, 0));
 
 // .transform().string
 
