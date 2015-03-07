@@ -1,4 +1,18 @@
 
+
+function Game() {
+    this.player1 = new Player(new Server(8085));
+    this.player2 = new Player(new Server(8086));
+    this.song;
+}
+
+Game.prototype.start = function () {
+    // load a song
+}
+
+// there are several on the screen at the same time.
+// what does that mean?
+// we have to compare to the currently open game move for the player
 var CURRENT_GAME_MOVE = null;
 
 // Constructor for one round of game play.
