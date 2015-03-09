@@ -1,14 +1,13 @@
 (ns chord.example.handler
+  (:use ring.middleware.reload)
   (:require [ring.util.response :refer [response resource-response]]
             [compojure.core :refer [defroutes GET ANY]]
             [compojure.route :refer [resources]]
             [chord.http-kit :refer [wrap-websocket-handler with-channel]]
             [clojure.core.async :refer [<! >! put! close! go-loop go]]
             [hiccup.page :refer [html5 include-js]]
-            [simple-brepl.service :refer [brepl-js]]
             [ring.middleware.format :refer [wrap-restful-format]]
             [ring.middleware.basic-authentication :refer [wrap-basic-authentication]]
-            ; [chord.example.utils :refer [tick]]
             ))
 
 (def clients (atom {}))
@@ -26,21 +25,37 @@
   ;          (recur))
   )
 
-(defn send-to-players [data]
-  (prn (str "going to send data: " data))
-  ; (go (doall (map (fn [con]
-  ;        (println (str "sending " data " to " con))
-  ;        (>! con {:gesture (format "m: " data)}))
-  ;      (keys @clients))))
-  )
+; (defn send-to-players [data]
+;   (prn (str "going to send this frickin data: " data))
+;   (go (doall (map (fn [con]
+;          (println (str "sending " data " to " con))
+;          (>! con {:gesture (format "m: " data)}))
+;        (keys @clients))))
+;   )
 
 (defn accel-handler [{:keys [ws-channel] :as req}]
   "For a websockets connection, stream gestures"
   (go-loop []
     (when-let [{:keys [message error] :as msg} (<! ws-channel)]
-      (prn "Message received:" msg)
+      (prn "Message received, punks:" msg)
       (println (keys @clients))
-      (send-to-players msg)
+      ; (send-to-players msg)
+
+      ; oh, this was so hard to get right.
+      ; http://dev.clojure.org/jira/browse/ASYNC-93
+      ; http://dev.clojure.org/jira/browse/ASYNC-98
+      ; http://stackoverflow.com/questions/26040928/couldnt-use-for-loop-in-go-block-of-core-async
+      ; https://clojuredocs.org/clojure.core/doseq
+      (doseq [player (keys @clients)]
+        (println (str "sending " msg " to " player))
+        (>! player {:gesture (format "m: %s" msg)}))
+      ; (go (doall (map (fn [con]
+      ;                   (println (str "sending " msg " to " con))
+      ;                   (>! con {:gesture (format "m: " msg)}))
+      ;                 (keys @clients))))
+
+
+      (prn "suck it")
       (>! ws-channel (if error
                        (format "Error: '%s'." (pr-str msg))
                        {:received (format "You passed: '%s' at %s." (pr-str message) (java.util.Date.))}))
@@ -63,7 +78,7 @@
   )
 
 (defroutes app-routes
-  (GET "/" [] (resource-response "index.html"))
+  (GET "/blah" [] (resource-response "index.html"))
   ; (GET "/" [] (response (page-frame)))
   (GET "/a1" [] (-> accel-handler
                     (wrap-websocket-handler {:format :transit-json})))
@@ -91,5 +106,5 @@
 ; and returns a response map.
 (def app
   ; using #' means that we refer to the symbol app-routes, and not the value it points to
-  #'app-routes)
+  (wrap-reload #'app-routes))
 
