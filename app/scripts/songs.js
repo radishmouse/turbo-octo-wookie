@@ -1,3 +1,28 @@
+var TRACKS = {
+    'barracuda': {
+        songName: 'Barracuda',
+        BPM: 138,
+        songLength: 259,
+        url: 'songs/1.m4a',
+        level: 5
+    },
+    'teen_spirit': {
+        songName: 'Smells Like Teen Spirit',
+        BPM: 120,
+        songLength: 262,
+        url: 'songs/2.m4a',
+        level: 5
+    },
+    'sweet_child': {
+        songName: 'Sweet Child Of Mine',
+        BPM: 128,
+        songLength: 348,
+        url: 'songs/3.m4a',
+        level: 5
+    }
+};
+
+
 
 var Songs = (function () {
     'use strict';
@@ -8,29 +33,6 @@ var Songs = (function () {
 
     window.addEventListener('load', init, false);
 
-    var TRACKS = {
-        'barracuda': {
-            songName: 'Barracuda',
-            BPM: 138,
-            songLength: 259,
-            url: 'songs/1.m4a',
-            level: 5
-        },
-        'teen_spirit': {
-            songName: 'Smells Like Teen Spirit',
-            BPM: 120,
-            songLength: 262,
-            url: 'songs/2.m4a',
-            level: 5
-        },
-        'sweet_child': {
-            songName: 'Sweet Child Of Mine',
-            BPM: 128,
-            songLength: 348,
-            url: 'songs/3.m4a',
-            level: 5
-        }
-    };
 
 
     var nowPlaying = {};
@@ -105,6 +107,7 @@ var Songs = (function () {
     return {
         playTrack: playTrack,
         stopTrack: stopTrack,
-        tracks: Object.keys(TRACKS)
+        tracks: Object.keys(TRACKS),
+        data: TRACKS
     };
 }());

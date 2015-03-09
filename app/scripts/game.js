@@ -22,7 +22,12 @@ Game.prototype.start = function () {
     // start animation
     // and then...wait?
     // play the current song
-    Songs.playTrack(Songs.tracks[currentSong]);
+
+    initNotes();
+    setTimeout(function () {
+        Songs.playTrack(Songs.tracks[currentSong]);
+    }, 5000)
+
 };
 
 // there are several on the screen at the same time.
