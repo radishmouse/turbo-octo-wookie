@@ -66,23 +66,23 @@ class Adafruit_LSM303(Adafruit_I2C):
 
 
     def read_accel_mag(self):
-        ALL_DATA = {}
-        ALL_DATA["Accelerometer"] = {}
-        ALL_DATA["Magnetometer"] = {}
+        wookie_adafruit = {}
+        wookie_adafruit["Accelerometer"] = {}
+        wookie_adafruit["Magnetometer"] = {}
 
         list = self.accel.readList(
           self.LSM303_REGISTER_ACCEL_OUT_X_L_A | 0x80, 6)
-      	ALL_DATA["Accelerometer"]["x"] = self.accel12(list, 0)
-      	ALL_DATA["Accelerometer"]["y"] = self.accel12(list, 2)
-      	ALL_DATA["Accelerometer"]["z"] = self.accel12(list, 4)
+      	wookie_adafruit["Accelerometer"]["x"] = self.accel12(list, 0)
+      	wookie_adafruit["Accelerometer"]["y"] = self.accel12(list, 2)
+      	wookie_adafruit["Accelerometer"]["z"] = self.accel12(list, 4)
 
         list = self.mag.readList(
       	  self.LSM303_REGISTER_MAG_OUT_X_H_M, 6)
-      	ALL_DATA["Magnetometer"]["x"] = self.mag16(list, 0)
-      	ALL_DATA["Magnetometer"]["y"] = self.mag16(list, 2)
-      	ALL_DATA["Magnetometer"]["z"] = self.mag16(list, 4)
+      	wookie_adafruit["Magnetometer"]["x"] = self.mag16(list, 0)
+      	wookie_adafruit["Magnetometer"]["y"] = self.mag16(list, 2)
+      	wookie_adafruit["Magnetometer"]["z"] = self.mag16(list, 4)
       
-        return ALL_DATA
+        return wookie_adafruit
 
 
     def setMagGain(gain=LSM303_MAGGAIN_1_3):

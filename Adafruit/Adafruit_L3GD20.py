@@ -30,17 +30,17 @@ y = 0
 z = 0
 
 while 1==1:
-	GYRO = {}
-	GYRO["Gyroscope"] = {}
-	GYRO["Gyroscope"]["x"] = x
-	GYRO["Gyroscope"]["y"] = y
-	GYRO["Gyroscope"]["z"] = z
+	wookie_adafruit = {}
+	wookie_adafruit["Gyroscope"] = {}
+	wookie_adafruit["Gyroscope"]["x"] = x
+	wookie_adafruit["Gyroscope"]["y"] = y
+	wookie_adafruit["Gyroscope"]["z"] = z
 
 	time.sleep(dt)
 	dxyz = s.Get_CalOut_Value()
 	x += dxyz[0]*dt;
 	y += dxyz[1]*dt;
 	z += dxyz[2]*dt;
-	gyro_data = json.dumps(GYRO)
+	gyro_data = json.dumps(wookie_adafruit)
 	ws.send(gyro_data)
 
