@@ -6,8 +6,6 @@ Gaming platform, with initial game styled after dance dance revolution.
 ![](clash-ui_stage_360.png)
 
 
-
-
 ## Components
 
 ### Controllers
