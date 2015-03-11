@@ -1,6 +1,10 @@
 # turbo-octo-wookie
 
-Gaming platform
+Gaming platform, with initial game styled after dance dance revolution.
+
+![](yobwocs_background_1024.png)
+![](clash-ui_stage_360.png)
+
 
 ## Components
 

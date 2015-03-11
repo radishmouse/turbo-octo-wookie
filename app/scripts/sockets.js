@@ -1,10 +1,27 @@
-var socket = new WebSocket("ws://ws-server.local:8081");
-socket.onopen = function (e) {
-   console.log("opened");
 
-   socket.send('hey');
-   socket.send('hey boyeee');
+function Server(port) {
+    'use strict';
+    var _self = this;
+    this.subscribers = [];
+    this.socket = new WebSocket('ws://localhost:' + port);
+    this.socket.onopen = function () {
+        console.log('opened');
+    };
+
+    this.socket.onmessage = function (e) {
+        _self.subscribers.forEach(function (f) {
+            f(e.data);
+        });
+    };
+}
+
+Server.prototype.send = function (msg) {
+    'use strict';
+    this.socket.send(msg);
 };
-socket.onmessage = function (e) {
-   console.log(e.data);
+
+Server.prototype.subscribe = function (cb) {
+    'use strict';
+    this.subscribers.push(cb);
 };
+

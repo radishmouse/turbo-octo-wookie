@@ -22,18 +22,53 @@ svg {
 	display: block;
 }
 
+.ball{
+	background: url('../img/ball.svg');
+	bottom: 250px;
+	left: 300px;
+	height: 200px;
+	position: absolute;
+	width: 200px;
+}
+
 .tray-group{
 	margin: 0 auto;
 	width: 1800px;
 }
 
 .tray {
+	background: url('../img/ui-tray.svg');
+	background-size: cover;
+	display:inline-block;
+	position: relative;
 	height: 1080px;
 	width: 800px;
 }
 
 .tray:first-child{
 	margin-right: 100px;
+}
+
+.noteLeft, .noteCenter, .noteRight{
+	// display: inline-block;
+	height:120px;
+	position: relative;
+	width: 120px;
+}
+
+.noteLeft{
+	background: url('../img/rednote.svg');
+	left: 150px;
+}
+
+.noteCenter{
+	background: url('../img/greennote.svg');
+	left: 350px;
+}
+
+.noteRight{
+	background: url('../img/bluenote.svg');
+	left: 550px;
 }
 
 .countdown{

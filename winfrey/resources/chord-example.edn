@@ -1,0 +1,5 @@
+{:frodo/config {:web {:port 3000
+                      :handler chord.example.handler/app
+                      }
+                        }
+                        }
