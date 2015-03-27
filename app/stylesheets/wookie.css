@@ -3,7 +3,7 @@
 }
 
 @-webkit-keyframes left-dance {
-  0%   { transform: rotate(-20deg); }
+  10%   { transform: rotate(-20deg); }
   20%   { transform: translateX(-100px); }
   40%   { transform: translateX(-100px); }
   50%   { transform: rotate(20deg); }
