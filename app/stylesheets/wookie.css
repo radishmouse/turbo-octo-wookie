@@ -4,15 +4,60 @@
 
 @-webkit-keyframes left-dance {
   10%   { transform: rotate(-20deg); }
-  20%   { transform: translateX(-100px); }
-  40%   { transform: translateX(-100px); }
-  50%   { transform: rotate(20deg); }
-  70%   { transform: translateX(100px); }
-  80%   { transform: rotate(20deg); }
-  100% { transform: translateX(100px); }
+  20%   { transform: translateX(-10%); }
+  40%   { transform: translateX(-20%); }
+  50%   { transform: rotate(20deg) translateX(-10%); }
+  100%  { transform: translateX(0); }
 }
 
 .left-dance {
 	-webkit-animation: left-dance 5s infinite;
 	animation: left-dance 5s infinite;
+}
+
+@-webkit-keyframes right-dance {
+  10%   { transform: rotate(20deg); }
+  20%   { transform: translateX(10%); }
+  40%   { transform: translateX(20%); }
+  50%   { transform: rotate(-20deg) translateX(10%); }
+  100%  { transform: translateX(0); }
+}
+
+.right-dance {
+	-webkit-animation: right-dance 5s infinite;
+	animation: right-dance 5s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%   { transform: translateY(0%); }
+  25%   { transform: translateY(-20%); }
+  50%   { transform: translateY(0); }
+  65%   { transform: translateY(-50%); }
+  80%   { transform: translateY(-20%); }
+  90%   { transform: translateY(-30%); }
+  100%   { transform: translateY(0); }
+}
+
+.bounce {
+	-webkit-animation: bounce 5s infinite;
+	animation: bounce 5s infinite;
+}
+
+@-webkit-keyframes shake {
+  0%    { transform: translateX(0%); }
+  10%	{ transform: translateX(-20%); }
+  20%   { transform: translateX(20%); }
+  30%   { transform: translateX(-20%); }
+  40%   { transform: translateX(20%); }
+  50%   { transform: translateX(-20%); }
+  60%   { transform: translateX(20%); }
+  70%   { transform: translateX(-20%); }
+  80%   { transform: translateX(20%); }
+  90%   { transform: translateX(-20%); }
+  100%  { transform: translateY(0); }
+}
+
+.shake {
+	-webkit-animation: shake 5s infinite;
+	animation: shake 5s infinite;
 }
