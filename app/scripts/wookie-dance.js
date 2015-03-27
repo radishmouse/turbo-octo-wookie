@@ -33,6 +33,11 @@ var shake = function(){
   fixit();
 };
 
+var spin = function(){
+  $('#wookie-top-blue').addClass('spin');
+  fixit();
+};
+
 // function whichTransitionEvent(){
 //     var t;
 //     var el = document.createElement('fakeelement');

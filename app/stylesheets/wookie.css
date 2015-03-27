@@ -61,3 +61,17 @@
 	-webkit-animation: shake 5s;
 	animation: shake 5s;
 }
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  -webkit-animation: spin 2s;
+  animation: spin 2s;
+}
