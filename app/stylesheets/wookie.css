@@ -11,8 +11,8 @@
 }
 
 .left-dance {
-	-webkit-animation: left-dance 5s infinite;
-	animation: left-dance 5s infinite;
+	-webkit-animation: left-dance 5s;
+	animation: left-dance 5s;
 }
 
 @-webkit-keyframes right-dance {
@@ -24,8 +24,8 @@
 }
 
 .right-dance {
-	-webkit-animation: right-dance 5s infinite;
-	animation: right-dance 5s infinite;
+	-webkit-animation: right-dance 5s;
+	animation: right-dance 5s;
 }
 
 @-webkit-keyframes bounce {
@@ -39,8 +39,8 @@
 }
 
 .bounce {
-	-webkit-animation: bounce 5s infinite;
-	animation: bounce 5s infinite;
+	-webkit-animation: bounce 5s;
+	animation: bounce 5s;
 }
 
 @-webkit-keyframes shake {
@@ -58,6 +58,6 @@
 }
 
 .shake {
-	-webkit-animation: shake 5s infinite;
-	animation: shake 5s infinite;
+	-webkit-animation: shake 5s;
+	animation: shake 5s;
 }
