@@ -1,0 +1,19 @@
+#wookie-top-blue {
+	max-width: 200px;
+}
+
+@-webkit-keyframes left-dance {
+  0%   { transform: rotate(-20 deg); }
+  10%   { transform: translateX(-100px); }
+  20%   { transform: translateX(-100px); }
+  40%   { opacity: 0; }
+  70%   { opacity: 1; }
+  80%   { opacity: 1; }
+  90%   { transform: translateX(100px); }
+  100% { transform: translateX(100px); }
+}
+
+.left-dance {
+	-webkit-animation: left-dance 5s infinite;
+	animation: left-dance 5s infinite;
+}
